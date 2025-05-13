@@ -726,7 +726,7 @@ img{
 #photo_background{
     width: 1017px;
     height: 400px;
-    background: url(/img/Frame\ 600.png);
+    background: url(../img/Frame\ 600.png);
     background-size:cover ;
     margin: 80px;
 }

@@ -126,7 +126,7 @@ img{
 #second_child_two{
     width: 600px;
     height: 500px;
-    background: url(/img/our_story.png);
+    background: url(../img/our_story.png);
     background-size:cover ;
 }
 #third_section{
