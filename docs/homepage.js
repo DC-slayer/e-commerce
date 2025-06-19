@@ -8,8 +8,8 @@ const carousel = document.getElementById("carousel");
 const slides = document.querySelectorAll(".slides");
 const scrollArrowLeft = document.getElementById("arrow_scroll_left");
 const scrollArrowRight = document.getElementById("arrow_scroll_right");
-const hrtIcon = document.getElementById("heart_icon");
-const hrtIcon1 = document.getElementById("heart_icon1")
+const hrtIcon = document.querySelectorAll(".like_icon");
+const hrtIcon1 = document.querySelectorAll(".first_solid_heart");
 const totalSlides = slides.length; // Total number of slides
 let index = 0;
 
@@ -192,20 +192,35 @@ scrollArrowLeft.addEventListener('click', () => {
   updateCountdown();
 
 
-function myfunc(){
-  try{
-    hrtIcon.style.display = "none";
-    hrtIcon1.style.display = 'flex';
-  }catch{
-    console.log("What tf are you doing?");
-  }
-}
+hrtIcon.forEach((likeButton, index) => {
+  likeButton.addEventListener('dblclick', () => {
+    try {
+      const correspondingHeart = hrtIcon1[index]; // Get the corresponding solid heart icon
+      const isRadiateShowing = correspondingHeart.classList.contains("show");
+      
+      if (isRadiateShowing) {
+        correspondingHeart.classList.remove("show");
+      } else {
+        correspondingHeart.classList.add("show");
+        correspondingHeart.style.display = 'flex'; // Show the solid heart
+        likeButton.style.display = "none"; // Hide the regular heart
+        console.log("Surprisingly but commendably, it worked.");
+      }
+    } catch (error) {
+      console.log("It didn't successfully carry out");
+      console.log(error);
+    }
+  });
+});
 
-function myfunc1(){
-  try{
-    hrtIcon1.style.display = 'none';
-    hrtIcon.style.display = "flex";
-  }catch{
-    console.log("I've forgotten how to Javascript");
-  }
-}
+hrtIcon1.forEach((likeButton1, index) => {
+  likeButton1.addEventListener('click', () => {
+    try {
+      likeButton1.style.display = 'none'; // Hide the solid heart
+      hrtIcon[index].style.display = "flex"; // Show the regular heart
+    } catch (error) {
+      console.log("I've forgotten how to JavaScript");
+      console.log(error);
+    }
+  });
+});

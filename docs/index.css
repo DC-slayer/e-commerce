@@ -1,9 +1,46 @@
 @import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 100,
+        'GRAD' 0,
+        'opsz' 24;
+    /* Default values */
+    display: inline-block;
+    transition: color 0.3s ease-in-out;
+        }
+        @keyframes invisibleArtistDraw {
+            0% {
+                /* Start of hover: icon is normal */
+                opacity: 1;
+                font-variation-settings: 'FILL' 0, 'wght' 100;
+            }
+            1% {
+                /* Immediately hide and set to the starting "thin point" for drawing */
+                opacity: 0;
+                font-variation-settings: 'FILL' 0, 'wght' 400; /* Very thin */
+            }
+            1.1% {
+                /* Start reappearing, still thin, to begin the "draw" */
+                opacity: 1;
+                font-variation-settings: 'FILL' 0, 'wght' 400; /* Still very thin */
+            }
+            100% {
+                /* End of animation: Fully visible and "drawn" (thicker outline) */
+                opacity: 1;
+                font-variation-settings: 'FILL' 0, 'wght' 100; /* Drawn to a bolder outline */
+            }
+        }
 body{
     font-family: "Poppins", sans-serif;
     margin: 0px;
     width: 100vw;
     overflow-x: hidden;
+}
+.material-symbols-outlined{
+    font-size: 42px !important; /* Adjust the size */
+    font-weight: 200 !important;
+    
 }
 #top-header{
     background-color: black;
@@ -180,7 +217,6 @@ img{
     overflow: hidden; /* Prevent overflow */
     transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Transition for height and opacity */
 }
-
 #women_menu.show {
     max-height: 200px; /* Set a max height that is greater than the content height */
     opacity: 1; /* Fully visible */
@@ -443,9 +479,6 @@ img{
     align-items: center;
     margin: 20px 0px;
 }
-/* .first_heart{
-    display: none;
-} */
 .sales_heading_text{
     font-size: x-large;
     font-weight: 600;
@@ -537,8 +570,8 @@ img{
 }
 .products_child:hover{
     cursor: pointer;
-    .product_image{
-        transform: scale(0.95);
+    .image_class{
+        transform: scale(0.93);
         transition: transform 0.3s ease-in-out;
     }
     .add-to-cart{
@@ -565,9 +598,24 @@ img{
     justify-content: center;
     border-radius: 100%;
 }
-/* @keyframes #heart_icon1 {
-    
-} */
+#heart_icon1.show{
+    display: flex;
+    animation: radiate 0.9s ease-in-out forwards;
+}
+@keyframes radiate {
+    0%{
+        box-shadow: 0 0 0 0 rgb(255, 0, 0, 0.7)
+    }    
+    40%{
+        box-shadow: 0 0 0 15px rgb(255, 0, 0, 0);
+    }
+    80%{
+        box-shadow: 0 0 0 25px rgb(255, 0, 0, 0);
+    }
+    100%{
+        box-shadow: 0 0 0 rgb(255, 0, 0, 0);
+    }
+}
 .eye_icon{
     margin-top: 5px;
     height: 25px;
@@ -685,10 +733,17 @@ img{
     justify-content: center;
     font-weight: 400;
     font-size: smaller;
+    transition: 0.4s ease-in-out;
+
 }
-.category_icon{
-    width: 40px;
-    height: 40px;
+.category:hover{
+    background-color: #DB4444;
+    color: #ffffff;
+    cursor: pointer;
+}
+.category:hover .material-symbols-outlined {
+    animation: invisibleArtistDraw 1.2s ease-out forwards; /* forwards to maintain final state */
+    color: #ffffff; /* Change icon color on hover of the category */
 }
 #third_section{
     margin: 80px;
@@ -724,11 +779,60 @@ img{
     width: 100px;
 }
 #photo_background{
-    width: 1017px;
-    height: 400px;
-    background: url(img/Frame_600.png);
-    background-size:cover ;
+    width: 900px;
+    max-height: 320px;
+    background-color: #000000;
     margin: 80px;
+    padding: 70px;
+}
+#photo_background_content{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#green_category{
+    color: #00FF66;
+    font-size: large;
+}
+#photo_background_h1_text{
+    font-size: 40px;
+    color: #ffffff;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+#time_balls{
+    display: flex;
+    gap: 19px;
+}
+.timer{
+    width: 49px;
+    height: 49px;
+    background-color: #ffffff;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 10px;
+    line-height: 15px;
+}
+.timer .time_numbers{
+    font-weight: 600;
+    font-size: 14px;
+}
+#green_button{
+    margin-top: 20px;
+    height: 45px;
+    width: 150px;
+    border: 5px;
+    background-color: #00FF66;
+    color: white;
+    border-radius: 5px;
+}
+#boom_player_image{
+    height: 100px;
+    width: 100px;
 }
 #fourth_section{
     margin: 80px;
